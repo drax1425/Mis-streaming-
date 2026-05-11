@@ -1,0 +1,13 @@
+{
+  "name": "cs2-thumbnail-generator",
+  "version": "1.0.0",
+  "description": "YouTube thumbnail generator for CS2 Dust II comeback video",
+  "main": "render.js",
+  "scripts": {
+    "render": "node render.js",
+    "render-all": "node render.js --all"
+  },
+  "dependencies": {
+    "puppeteer": "^22.0.0"
+  }
+}

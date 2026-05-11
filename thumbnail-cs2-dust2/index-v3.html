@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1280" />
+  <title>CS2 Thumbnail V3 — "PRIMERA PARTIDA / EN CS2 OTRA VEZ"</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* V3-specific overrides — warm green / CS2 classic palette */
+    :root {
+      --color-accent:       #2ECC71;  /* CS2 "match won" green */
+      --color-text-sub:     #2ECC71;
+      --color-glow:         rgba(46, 204, 113, 0.40);
+      --color-glow-warm:    rgba(46, 204, 113, 0.25);
+      --color-badge-bg:     #1A7A45;
+    }
+    /* V3 headline punchy 1-liners */
+    .headline { font-size: 136px; }
+    .subheadline {
+      font-size: 62px;
+      letter-spacing: 3px;
+    }
+    /* Map tag green */
+    .map-tag {
+      background: #2ECC71;
+      color: #061510;
+      box-shadow: 0 4px 20px rgba(46,204,113,0.5);
+    }
+    .map-tag .dot { background: #061510; }
+    /* Badge */
+    .badge-ribbon { background: #1A7A45; }
+    /* Kill feed green accent */
+    .kf-weapon { color: #2ECC71; }
+    .kf-icon   { background: #2ECC71; }
+    /* Stripe in green tint */
+    .bg-stripe {
+      background: linear-gradient(
+        118deg,
+        transparent 0%,
+        transparent 38%,
+        rgba(46, 204, 113, 0.06) 38%,
+        rgba(46, 204, 113, 0.06) 40%,
+        transparent 40%
+      );
+    }
+    /* Highlight "OTRA VEZ" so it pops */
+    .subheadline .accent {
+      color: #F39C12;
+      text-shadow: -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 4px 4px 0 #000,
+                   0 0 30px rgba(243,156,18,0.6);
+    }
+  </style>
+</head>
+<body>
+
+<div class="thumbnail">
+
+  <div class="bg-scene">
+    <img class="bg-scene-img" src="assets/dust2-bg.jpg" alt=""
+         onerror="this.style.display='none'" />
+  </div>
+  <div class="bg-stripe"></div>
+  <div class="dust-overlay"></div>
+
+  <!-- Badge V3 -->
+  <div class="badge-ribbon">1ra PARTIDA</div>
+
+  <!-- Kill feed V3 — headshot highlight -->
+  <div class="killfeed">
+    <div class="killfeed-row">
+      <span class="kf-you">Drax</span>
+      <span class="kf-icon"></span>
+      <span class="kf-weapon">M4A4</span>
+      <span class="kf-enemy">enemy</span>
+    </div>
+    <div class="killfeed-row" style="opacity:0.7;font-size:17px;">
+      <span style="color:#aaa;">🎯 headshot</span>
+    </div>
+  </div>
+
+  <!-- Face -->
+  <div class="face-panel">
+    <div class="face-glow"></div>
+    <img class="face-img" src="assets/drax-face.png" alt="Drax"
+         onerror="this.style.display='none'" />
+    <div class="face-placeholder"><span>Drax</span></div>
+  </div>
+
+  <!-- Weapon (M4A4 / generic) -->
+  <div class="weapon-container">
+    <img class="weapon-img" src="assets/m4a4.png" alt="M4A4"
+         onerror="this.nextElementSibling.style.display='flex'; this.style.display='none'" />
+    <div class="weapon-placeholder" id="weapon-svg-placeholder">
+      <!-- M4A4 silhouette simplified -->
+      <svg viewBox="0 0 480 110" width="480" height="110" xmlns="http://www.w3.org/2000/svg"
+           style="filter:drop-shadow(0 0 18px rgba(46,204,113,.45))">
+        <g fill="#7A8090" stroke="#3A3F45" stroke-width="1.5">
+          <rect x="0"   y="48" width="95"  height="22" rx="4"/>
+          <rect x="12"  y="38" width="18"  height="12" rx="3"/>
+          <rect x="90"  y="56" width="24"  height="36" rx="4" transform="rotate(5,102,74)"/>
+          <rect x="85"  y="40" width="215" height="28" rx="5" fill="#6A7080"/>
+          <rect x="178" y="44" width="85"  height="20" rx="3" fill="#5A5E65"/>
+          <rect x="285" y="48" width="175" height="12" rx="4" fill="#4E5260" stroke="#2A2E35"/>
+          <rect x="138" y="64" width="26"  height="40" rx="4" transform="rotate(-4,151,84)"/>
+          <rect x="192" y="36" width="75"  height="8"  rx="3" fill="#5A5E65"/>
+          <rect x="205" y="30" width="6"   height="12" rx="1" fill="#252A32"/>
+          <rect x="258" y="28" width="10"  height="10" rx="1" fill="#252A32"/>
+        </g>
+        <ellipse cx="460" cy="54" rx="14" ry="7" fill="rgba(46,204,113,0.4)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Text block V3 -->
+  <div class="text-block">
+    <div class="headline">PRIMERA <span class="accent">PARTIDA</span></div>
+    <div class="subheadline">EN CS2 <span class="accent">OTRA VEZ</span></div>
+    <div class="map-tag"><span class="dot"></span>DUST II<span class="dot"></span></div>
+  </div>
+
+  <div class="timestamp-zone"></div>
+</div>
+
+<script>
+  document.querySelector('.weapon-img')?.addEventListener('load', () => {
+    document.getElementById('weapon-svg-placeholder').style.display = 'none';
+  });
+</script>
+</body>
+</html>

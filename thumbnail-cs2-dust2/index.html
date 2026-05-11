@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1280" />
+  <title>CS2 Thumbnail — Drax</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="thumbnail">
+
+  <!-- ── Background scene ───────────────────────────────────── -->
+  <div class="bg-scene">
+    <!--
+      Coloca tu captura de Dust II (mid doors / long A) en:
+        assets/dust2-bg.jpg
+      Recomendación: screenshot desde la perspectiva del CT mirando hacia mid
+    -->
+    <img
+      class="bg-scene-img"
+      src="assets/dust2-bg.jpg"
+      alt="Dust II background"
+      onerror="this.style.display='none'"
+    />
+  </div>
+
+  <!-- Diagonal accent stripe -->
+  <div class="bg-stripe"></div>
+
+  <!-- Dust/particle overlay -->
+  <div class="dust-overlay"></div>
+
+  <!-- ── Top-left badge ─────────────────────────────────────── -->
+  <div class="badge-ribbon">RETURN</div>
+
+  <!-- ── Kill feed (top right) ──────────────────────────────── -->
+  <div class="killfeed">
+    <div class="killfeed-row">
+      <span class="kf-you">Drax</span>
+      <span class="kf-icon"></span>
+      <span class="kf-weapon">AK-47</span>
+      <span class="kf-enemy">enemy</span>
+    </div>
+  </div>
+
+  <!-- ── Streamer face (left 40 %) ──────────────────────────── -->
+  <div class="face-panel">
+    <div class="face-glow"></div>
+    <!--
+      Opción A: foto del streamer (PNG con fondo transparente ideal)
+        <img class="face-img" src="assets/drax-face.png" alt="Drax" />
+
+      Opción B: placeholder activado (eliminar cuando tengas foto)
+    -->
+    <div class="face-placeholder">
+      <span>Drax</span>
+    </div>
+  </div>
+
+  <!-- ── Weapon foreground ──────────────────────────────────── -->
+  <div class="weapon-container">
+    <!--
+      Coloca el render del arma en: assets/ak47.png  (fondo transparente)
+      Si no tienes el render, el SVG inline de abajo actúa como placeholder.
+    -->
+    <img
+      class="weapon-img"
+      src="assets/ak47.png"
+      alt="AK-47"
+      onerror="this.style.display='none'"
+    />
+
+    <!-- SVG placeholder — visible si no hay assets/ak47.png -->
+    <div class="weapon-placeholder" id="weapon-svg-placeholder">
+      <svg viewBox="0 0 480 120" width="480" height="120" xmlns="http://www.w3.org/2000/svg"
+           style="filter:drop-shadow(0 0 18px rgba(243,156,18,.5))">
+        <!-- AK-47 silhouette simplified -->
+        <g fill="#8B7355" stroke="#4A3728" stroke-width="1.5">
+          <!-- Stock -->
+          <rect x="0" y="52" width="90" height="22" rx="4"/>
+          <rect x="10" y="44" width="20" height="8" rx="2"/>
+          <!-- Grip -->
+          <rect x="88" y="58" width="22" height="36" rx="4" transform="rotate(8,99,76)"/>
+          <!-- Body -->
+          <rect x="80" y="46" width="230" height="26" rx="5"/>
+          <!-- Handguard -->
+          <rect x="180" y="50" width="90" height="18" rx="3" fill="#5C4A35"/>
+          <!-- Barrel -->
+          <rect x="298" y="53" width="160" height="10" rx="3" fill="#6B6B6B" stroke="#444"/>
+          <!-- Magazine -->
+          <rect x="140" y="68" width="28" height="44" rx="4" transform="rotate(-5,154,90)"/>
+          <!-- Gas tube -->
+          <rect x="195" y="42" width="80" height="8" rx="3" fill="#6B6B6B"/>
+          <!-- Sight -->
+          <rect x="200" y="38" width="6" height="12" rx="1" fill="#333"/>
+          <rect x="260" y="36" width="10" height="10" rx="1" fill="#333"/>
+        </g>
+        <!-- Muzzle flash hint -->
+        <ellipse cx="458" cy="58" rx="16" ry="8" fill="rgba(243,156,18,0.4)" filter="url(#glow)"/>
+        <defs>
+          <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ── Main text block ────────────────────────────────────── -->
+  <div class="text-block">
+
+    <!-- Headline: "VOLVÍ AL CS2" -->
+    <div class="headline">
+      VOLVÍ AL <span class="accent">CS2</span>
+    </div>
+
+    <!-- Sub-headline -->
+    <div class="subheadline">¿SIGO OXIDADO?</div>
+
+    <!-- Map tag -->
+    <div class="map-tag">
+      <span class="dot"></span>
+      DUST II
+      <span class="dot"></span>
+    </div>
+
+  </div>
+
+  <!-- Safe-zone bottom-right (YouTube timestamp goes here) -->
+  <div class="timestamp-zone"></div>
+
+</div><!-- /.thumbnail -->
+
+<script>
+  // Hide weapon SVG placeholder if real image loaded
+  const weaponImg = document.querySelector('.weapon-img');
+  const svgPlaceholder = document.getElementById('weapon-svg-placeholder');
+  if (weaponImg && svgPlaceholder) {
+    weaponImg.addEventListener('load', () => { svgPlaceholder.style.display = 'none'; });
+  }
+  // Hide face placeholder if real image loaded
+  const faceImg = document.querySelector('.face-img');
+  const facePh  = document.querySelector('.face-placeholder');
+  if (faceImg && facePh) {
+    faceImg.addEventListener('load', () => { facePh.style.display = 'none'; });
+  }
+</script>
+
+</body>
+</html>

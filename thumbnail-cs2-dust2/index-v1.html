@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1280" />
+  <title>CS2 Thumbnail V1 — "VOLVÍ AL CS2 / ¿SIGO OXIDADO?"</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* V1-specific overrides */
+    :root {
+      --color-accent:    #F39C12;  /* orange — same as base */
+      --color-text-sub:  #FF6B00;  /* hot orange for subheadline */
+    }
+    /* Slightly larger headline for this hook */
+    .headline { font-size: 152px; }
+    /* Badge says RETURN */
+    .badge-ribbon { background: #C0392B; }
+  </style>
+</head>
+<body>
+
+<div class="thumbnail">
+
+  <div class="bg-scene">
+    <img class="bg-scene-img" src="assets/dust2-bg.jpg" alt=""
+         onerror="this.style.display='none'" />
+  </div>
+  <div class="bg-stripe"></div>
+  <div class="dust-overlay"></div>
+
+  <!-- Badge -->
+  <div class="badge-ribbon">RETURN</div>
+
+  <!-- Kill feed -->
+  <div class="killfeed">
+    <div class="killfeed-row">
+      <span class="kf-you">Drax</span>
+      <span class="kf-icon"></span>
+      <span class="kf-weapon">AK-47</span>
+      <span class="kf-enemy">enemy</span>
+    </div>
+  </div>
+
+  <!-- Face -->
+  <div class="face-panel">
+    <div class="face-glow"></div>
+    <img class="face-img" src="assets/drax-face.png" alt="Drax"
+         onerror="this.style.display='none'" />
+    <div class="face-placeholder"><span>Drax</span></div>
+  </div>
+
+  <!-- Weapon -->
+  <div class="weapon-container">
+    <img class="weapon-img" src="assets/ak47.png" alt="AK-47"
+         onerror="this.style.display='none'" />
+    <div class="weapon-placeholder" id="weapon-svg-placeholder">
+      <svg viewBox="0 0 480 120" width="480" height="120" xmlns="http://www.w3.org/2000/svg"
+           style="filter:drop-shadow(0 0 18px rgba(243,156,18,.5))">
+        <g fill="#8B7355" stroke="#4A3728" stroke-width="1.5">
+          <rect x="0" y="52" width="90" height="22" rx="4"/>
+          <rect x="10" y="44" width="20" height="8" rx="2"/>
+          <rect x="88" y="58" width="22" height="36" rx="4" transform="rotate(8,99,76)"/>
+          <rect x="80" y="46" width="230" height="26" rx="5"/>
+          <rect x="180" y="50" width="90" height="18" rx="3" fill="#5C4A35"/>
+          <rect x="298" y="53" width="160" height="10" rx="3" fill="#6B6B6B" stroke="#444"/>
+          <rect x="140" y="68" width="28" height="44" rx="4" transform="rotate(-5,154,90)"/>
+          <rect x="195" y="42" width="80" height="8" rx="3" fill="#6B6B6B"/>
+          <rect x="200" y="38" width="6" height="12" rx="1" fill="#333"/>
+          <rect x="260" y="36" width="10" height="10" rx="1" fill="#333"/>
+        </g>
+        <ellipse cx="458" cy="58" rx="16" ry="8" fill="rgba(243,156,18,0.4)" filter="url(#glow)"/>
+        <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Text block V1 -->
+  <div class="text-block">
+    <div class="headline">VOLVÍ AL <span class="accent">CS2</span></div>
+    <div class="subheadline">¿SIGO OXIDADO?</div>
+    <div class="map-tag"><span class="dot"></span>DUST II<span class="dot"></span></div>
+  </div>
+
+  <div class="timestamp-zone"></div>
+</div>
+
+<script>
+  document.querySelector('.weapon-img')?.addEventListener('load', () => {
+    document.getElementById('weapon-svg-placeholder').style.display = 'none';
+  });
+</script>
+</body>
+</html>
