@@ -241,9 +241,9 @@ body {
 /* Main headline */
 .headline {
   font-family: var(--font-primary);
-  font-size: 148px;
+  font-size: 118px;
   line-height: 0.88;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   color: var(--color-text-main);
   text-transform: uppercase;
   text-shadow: var(--stroke), 0 6px 28px rgba(0,0,0,0.9);
